@@ -1,15 +1,23 @@
 package com.company;
 
+//PPPQCNOYQFRRREQCPAYMOGCJXOKXIESSNVKOGNMFDWHLIPJGKXLLAYBLWLAWCBQMMAMIOEEFXJMUBRT
+
+//FIREDMAN
+
+
 import java.util.ArrayList;
 import java.util.Collections;
 
 public class Main {
 
-    private static final String CIPHER_TEXT = "PPPQCNOYQFRRREQCPAYMOGCJXOKXIESSNVKOGNMFDWHLIPJGKXLLAYBLWLAWCBQMMAMIOEEFXJMUBRT";
-    private static final String KNOWN_PLAINTEXT = "FIREDMAN";
+    protected static String cipher_text;
+    protected static String known_plaintext;
 
     public static void main(String[] args) {
-        Running runningKey = new Running(CIPHER_TEXT, KNOWN_PLAINTEXT);
+        javafx.application.Application.launch(GUIinterface.class);
+    }
+    public static void testRun(){
+        Running runningKey = new Running(cipher_text, known_plaintext);
         ArrayList<CipherTextSnippet> snippets = runningKey.getCipherTextSnippets();
         Collections.sort(snippets);
 
@@ -19,4 +27,5 @@ public class Main {
 
         System.out.println("asdf");
     }
+
 }

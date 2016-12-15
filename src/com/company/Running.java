@@ -14,8 +14,14 @@ public class Running {
     private static final int OFFSET = 64;
 
     public Running(String cipherText, String knownPlainText) {
-        this.cipherText = cipherText;
-        this.knownPlainText = knownPlainText;
+        String[] text = cipherText.toUpperCase().split(" ");
+        String actualText = "";
+        for (String s :
+                text) {
+            actualText += s;
+        }
+        this.cipherText = actualText;
+        this.knownPlainText = knownPlainText.toUpperCase();
         cipherTextSnippets = new ArrayList<>();
         computeCipherTextSnippets();
     }
@@ -27,7 +33,7 @@ public class Running {
             for (int startOfCipher = i; startOfCipher < knownPlainText.length() + i; startOfCipher++) {//
                 int ct = cipherText.charAt(startOfCipher) - OFFSET;
                 int pt = knownPlainText.charAt(currentPlainTextIndex++) - OFFSET;
-                int keyLetter = ((pt - ct) + 26) % 26 + OFFSET;
+                int keyLetter = ((ct - pt) + 27) % 26 + OFFSET;
                 if (keyLetter == OFFSET) {
                     keyLetter = 'Z';
                 }
