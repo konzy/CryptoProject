@@ -1,10 +1,5 @@
 package com.company;
 
-//PPPQCNOYQFRRREQCPAYMOGCJXOKXIESSNVKOGNMFDWHLIPJGKXLLAYBLWLAWCBQMMAMIOEEFXJMUBRT
-
-//FIREDMAN
-
-
 import java.util.ArrayList;
 import java.util.Collections;
 

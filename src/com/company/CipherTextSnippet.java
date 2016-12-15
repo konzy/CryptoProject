@@ -17,9 +17,7 @@ public class CipherTextSnippet implements Comparable {
     }
 
     private double computeIndexOfCoincidence() {
-
         double result = 0.0;
-
         for (Letters letters : Letters.values()) {
             String current = letters.name();
             int appearances = 0;
@@ -32,6 +30,8 @@ public class CipherTextSnippet implements Comparable {
         }
         return result;
     }
+
+
 
     private double computeLiklihood() {
         double result = 0.0;
@@ -70,9 +70,9 @@ public class CipherTextSnippet implements Comparable {
     @Override
     public int compareTo(Object o) {
         if (o instanceof CipherTextSnippet) {
-            if (indexOfCoincidence > ((CipherTextSnippet) o).getIndexOfCoincidence()) {
+            if (getLikelihoodOfLettersInEnglish() > ((CipherTextSnippet) o).getLikelihoodOfLettersInEnglish()) {
                 return - 1;
-            } else if (indexOfCoincidence < ((CipherTextSnippet) o).getIndexOfCoincidence()) {
+            } else if (getLikelihoodOfLettersInEnglish() < ((CipherTextSnippet) o).getLikelihoodOfLettersInEnglish()) {
                 return 1;
             } else {
                 return 0;

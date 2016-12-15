@@ -7,23 +7,28 @@ import java.util.ArrayList;
  */
 
 public class Running {
-    private String cipherText;
-    private String knownPlainText;
+    private String cipherText = "";
+    private String knownPlainText = "";
     private ArrayList<CipherTextSnippet> cipherTextSnippets;
 
     private static final int OFFSET = 64;
 
     public Running(String cipherText, String knownPlainText) {
-        String[] text = cipherText.toUpperCase().split(" ");
-        String actualText = "";
-        for (String s :
-                text) {
-            actualText += s;
-        }
-        this.cipherText = actualText;
-        this.knownPlainText = knownPlainText.toUpperCase();
+
+        this.cipherText = stripChars(cipherText);
+        this.knownPlainText = stripChars(knownPlainText);
         cipherTextSnippets = new ArrayList<>();
         computeCipherTextSnippets();
+    }
+
+    private String stripChars(String cipherText) {
+        String result = "";
+        for (char c : cipherText.toUpperCase().toCharArray()) {
+            if (c > 64 && c < 91) {
+                result += String.valueOf(c);
+            }
+        }
+        return result;
     }
 
     private void computeCipherTextSnippets() {
@@ -33,7 +38,7 @@ public class Running {
             for (int startOfCipher = i; startOfCipher < knownPlainText.length() + i; startOfCipher++) {//
                 int ct = cipherText.charAt(startOfCipher) - OFFSET;
                 int pt = knownPlainText.charAt(currentPlainTextIndex++) - OFFSET;
-                int keyLetter = ((ct - pt) + 27) % 26 + OFFSET;
+                int keyLetter = (ct - pt + 27) % 26 + OFFSET;
                 if (keyLetter == OFFSET) {
                     keyLetter = 'Z';
                 }

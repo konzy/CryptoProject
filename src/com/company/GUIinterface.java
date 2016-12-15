@@ -81,7 +81,7 @@ public class GUIinterface extends Application {
 
             String acc = "";
             for (CipherTextSnippet snippet : snippets) {
-                acc += snippet.getIndex() + " " + snippet.toString() + " " + snippet.getIndexOfCoincidence() + "\r\n";
+                acc += snippet.getIndex() + " " + snippet.toString() + " " + snippet.getLikelihoodOfLettersInEnglish() + "\r\n";
             }
             outputoutput.setText(acc);
         });
